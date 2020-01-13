@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainPage {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  background-color: blue;
+  height: 100vh;
+  width: 100%;
+}
+
+.titleContainer {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  background-color: pink;
 }
 
-.App-link {
-  color: #61dafb;
+.array {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%;
+  flex: 1;
+  background-color: yellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.arrayElements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  background-color: green;
+  width: 100%;
+}
+
+.elementContainer {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  background-color: orange;
+}
+
+.element {
+  font-size: 20px;
+}
+
+.clicked {
+  font-size: 20px;
+  text-decoration: line-through;
+  color: red;
+}
+
+.crossContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+}
+
+.cross {
+  font-size: 14px;
+}
+
+.formSubmit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  justify-content: center;
+  background-color: red;
+}
+
+.input {
+  height: 25px;
+  width: 200px;
+  border: 1px solid black;
+  padding: 5px;
+  outline: none;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 20px;
+  width: 150px;
+  margin-left: 35px;
 }
