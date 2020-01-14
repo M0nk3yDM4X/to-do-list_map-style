@@ -1,27 +1,37 @@
+input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border: none;
+}
+
 .mainPage {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: blue;
   height: 100vh;
   width: 100%;
+  background-color: #778899;
 }
 
 .titleContainer {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: pink;
+  text-transform: capitalize;
 }
 
 .array {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 40%;
+  width: 30%;
+  padding: 0 10px;
+  border-radius: 5px;
   flex: 1;
-  background-color: yellow;
+  border: 2px solid black;
+  background-color: #fff5ee;
 }
 
 .arrayElements {
@@ -29,19 +39,18 @@
   justify-content: center;
   align-items: center;
   height: 44px;
-  background-color: green;
   width: 100%;
+  border-bottom: 1px dashed black;
 }
 
 .elementContainer {
   display: flex;
-  justify-content: center;
-  width: 60%;
-  background-color: orange;
+  flex: 1;
 }
 
 .element {
   font-size: 20px;
+  cursor: pointer;
 }
 
 .clicked {
@@ -55,9 +64,11 @@
   justify-content: center;
   align-items: center;
   background-color: white;
+  border: 1px solid black;
   width: 28px;
   height: 28px;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .cross {
@@ -70,13 +81,17 @@
   width: 100%;
   height: 80px;
   justify-content: center;
-  background-color: red;
 }
 
 .input {
+  display: flex;
+  font-family: "Oswald", sans-serif;
+  font-weight: 300;
+  font-size: large;
+  text-align: center;
   height: 25px;
   width: 200px;
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 5px;
   outline: none;
 }
@@ -85,8 +100,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  height: 20px;
-  width: 150px;
+  cursor: pointer;
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  height: 15px;
+  width: 15px;
+  border-radius: 25%;
   margin-left: 35px;
+  padding: 5px;
 }

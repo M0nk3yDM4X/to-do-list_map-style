@@ -5,11 +5,11 @@ function App() {
   const [inputTask, setInputTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  const toto = event => {
+  const listenInput = event => {
     setInputTask(event.target.value);
   };
 
-  const bibi = event => {
+  const submit = event => {
     event.preventDefault();
     const newTask = [...tasks];
     if (inputTask) {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="mainPage">
       <div className="titleContainer">
-        <h1>TO DO LIST</h1>
+        <h1>to do list</h1>
       </div>
       <div className="array">
         {tasks.map((element, index) => {
@@ -41,31 +41,31 @@ function App() {
                   {element.name}
                 </span>
               </div>
-              <div className="crossContainer">
-                <span
-                  className="cross"
-                  onClick={() => {
-                    const newTasks = [...tasks];
-                    newTasks.splice(index, 1);
-                    setTasks(newTasks);
-                  }}
-                >
-                  x
-                </span>
+              <div
+                className="crossContainer"
+                onClick={() => {
+                  const newTasks = [...tasks];
+                  newTasks.splice(index, 1);
+                  setTasks(newTasks);
+                }}
+              >
+                <span className="cross">x</span>
               </div>
             </div>
           );
         })}
       </div>
 
-      <form className="formSubmit" onSubmit={bibi}>
+      <form className="formSubmit" onSubmit={submit}>
         <input
           value={inputTask}
-          onChange={toto}
+          onChange={listenInput}
           placeholder="entrez votre tâche ici"
           className="input"
         />
-        <span className="submitButton">Ajoutez votre tâche</span>
+        <span className="submitButton" onClick={submit}>
+          +
+        </span>
       </form>
     </div>
   );
