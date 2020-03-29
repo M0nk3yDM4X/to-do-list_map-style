@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const [inputTask, setInputTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [update, setUpdate] = useState(false);
+
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:8000/task/read");
+    setTasks(response.data);
+  };
 
   const listenInput = event => {
     setInputTask(event.target.value);
@@ -11,13 +18,29 @@ function App() {
 
   const submit = event => {
     event.preventDefault();
-    const newTask = [...tasks];
     if (inputTask) {
-      newTask.push({ name: inputTask, done: false, id: true });
-      setTasks(newTask);
+      axios.post("http://localhost:8000/task/new", {
+        name: inputTask,
+        done: false
+      });
       setInputTask("");
+      setUpdate(!update);
     }
   };
+
+  const handleUpdateTask = async id => {
+    await axios.post("http://localhost:8000/task/update/" + id);
+    setUpdate(!update);
+  };
+
+  const handleDeleteTask = async id => {
+    await axios.post("http://localhost:8000/task/delete/" + id);
+    setUpdate(!update);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [update]);
 
   return (
     <div className="mainPage">
@@ -25,28 +48,23 @@ function App() {
         <h1>to do list</h1>
       </div>
       <div className="array">
-        {tasks.map((element, index) => {
+        {tasks.map((task, index) => {
           return (
-            <div className="arrayElements">
+            <div key={index} className="arrayElements">
               <div className="elementContainer">
                 <span
-                  className={tasks[index].done === true ? "clicked" : "element"}
                   onClick={() => {
-                    const newTasks = [...tasks];
-                    newTasks[index].done = !newTasks[index].done;
-                    console.log(newTasks[index].done);
-                    setTasks(newTasks);
+                    handleUpdateTask(task._id);
                   }}
+                  className={task.done === true ? "clicked" : "element"}
                 >
-                  {element.name}
+                  {task.name}
                 </span>
               </div>
               <div
                 className="crossContainer"
                 onClick={() => {
-                  const newTasks = [...tasks];
-                  newTasks.splice(index, 1);
-                  setTasks(newTasks);
+                  handleDeleteTask(task._id);
                 }}
               >
                 <span className="cross">x</span>
